@@ -1,0 +1,391 @@
+@import url("https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap");
+:root {
+  --primColor: #000640;
+  --secColor: #f3ae41;
+  --whiteColor: #ffffff;
+  --dirForward: forwards;
+  --dirReverse: reverse;
+}
+
+@font-face {
+  font-family: "Clash Display";
+  src: url(assets/ClashDisplay-Variable.ttf);
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--primColor);
+}
+
+h1 {
+  font-family: "Clash Display";
+  font-size: 32px;
+  color: white;
+  font-weight: 600;
+}
+
+h2 {
+  font-family: Figtree;
+  font-size: 13px;
+  color: white;
+  font-weight: 400;
+}
+
+h3 {
+  font-family: "Clash Display";
+  font-size: 24px;
+  color: white;
+  font-weight: 600;
+}
+
+p {
+  font-family: Figtree;
+  font-size: 16px;
+  color: white;
+  font-weight: 400;
+}
+
+.fadeout-horizontal {
+  -webkit-mask-image: linear-gradient(to right, transparent, black 50px, black calc(100% - 50px), transparent);
+          mask-image: linear-gradient(to right, transparent, black 50px, black calc(100% - 50px), transparent);
+}
+
+.headfoot {
+  width: -moz-max-content;
+  width: max-content;
+  padding: 7px 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--secColor);
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+}
+.headfoot p {
+  font-family: "Clash Display";
+  font-size: 16px;
+  font-weight: 600;
+}
+.headfoot img {
+  width: 13px;
+  height: 13px;
+}
+
+.onprogress {
+  display: none;
+}
+
+#hero::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: rgba(0, 6, 64, 0.5);
+  z-index: 0;
+}
+
+#hero {
+  width: 100%;
+  height: 100vh;
+  padding: 20px;
+  position: relative;
+  display: flex;
+  align-items: end;
+  background: url(assets/welcome_img.jpg);
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+}
+#hero #ctaMobile {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  z-index: 3;
+}
+#hero #ctaMobile .infoMobile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 150px;
+}
+#hero #ctaMobile .infoMobile > img {
+  width: 74px;
+  margin-bottom: -10px;
+}
+#hero #ctaMobile .infoMobile h1 {
+  font-size: 48px;
+  margin: -15px 0;
+}
+#hero #ctaMobile .infoMobile h2 {
+  font-family: Figtree;
+  font-weight: 400;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.7);
+}
+#hero #ctaMobile .scrollToExplore {
+  display: flex;
+  color: white;
+  gap: 5px;
+  transform: rotate(90deg);
+  position: absolute;
+  bottom: 80px;
+  right: -40px;
+  animation: topBottomSte 2.5s infinite ease-in-out;
+}
+@keyframes topBottomSte {
+  0% {
+    bottom: 80px;
+  }
+  50% {
+    bottom: 90px;
+  }
+  100% {
+    bottom: 80px;
+  }
+}
+#hero #ctaMobile .scrollToExplore p {
+  font-size: 11px;
+}
+#hero #ctaMobile .scrollToExplore img {
+  width: 13px;
+  height: 13px;
+}
+
+#clients {
+  width: 100%;
+  padding-block: 50px;
+  overflow: clip;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+#clients .titles-clients {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#clients .marquee-client {
+  display: flex;
+  overflow: hidden;
+  gap: 20px;
+}
+#clients .marquee-client .marquee-client-track {
+  display: flex;
+  flex-shrink: 0;
+  justify-content: space-around;
+  min-width: 100%;
+  gap: 20px;
+  animation: marquee-move 10s linear infinite;
+}
+#clients .marquee-client .marquee-client-track img {
+  height: 30px;
+  filter: opacity(50%);
+}
+#clients .marquee-client .marquee-client-track img:hover {
+  filter: opacity(100%);
+}
+@keyframes marquee-move {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(calc(-100% - 20px));
+  }
+}
+#clients .marquee-client:hover .marquee-client-track {
+  animation-play-state: paused;
+}
+
+#about-me {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  padding: 50px 20px;
+  text-align: center;
+  overflow-x: hidden;
+}
+#about-me .titles-about-me {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: center;
+}
+#about-me .titles-about-me h1 {
+  font-family: "Clash Display";
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--secColor);
+}
+#about-me .titles-about-me h2 {
+  font-family: "Clash Display";
+  font-size: 32px;
+  font-weight: 600;
+}
+#about-me .content-about-me {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+#about-me > img {
+  position: absolute;
+  z-index: -1;
+  filter: opacity(10%);
+  width: 383px;
+  transform: translateX(-10px);
+}
+@keyframes gradientChange {
+  0% {
+    transform: scale(1.3);
+    filter: opacity(0%);
+  }
+  25% {
+    transform: scale(1);
+    filter: opacity(10%);
+  }
+  50% {
+    transform: scale(1);
+    filter: opacity(10%);
+  }
+  75% {
+    transform: scale(1);
+    filter: opacity(10%);
+  }
+  100% {
+    transform: scale(1.3);
+    filter: opacity(0%);
+  }
+}
+
+#skills {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  padding: 50px 20px;
+  text-align: center;
+}
+#skills div {
+  width: 100%;
+  display: flex;
+}
+#skills .titles-skills {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: center;
+}
+#skills .titles-skills h1 {
+  font-family: "Clash Display";
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--secColor);
+}
+#skills .titles-skills h2 {
+  font-family: "Clash Display";
+  font-size: 32px;
+  font-weight: 600;
+}
+#skills .description-skills {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+  gap: 25px;
+}
+#skills .description-skills .content-d-s {
+  flex-direction: column;
+  gap: 10px;
+}
+#skills .description-skills .content-d-s hr {
+  border: 1px solid var(--secColor);
+}
+
+#portofolio {
+  width: 100%;
+  padding-block: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 50px;
+  text-align: center;
+}
+#portofolio .titles-portofolio {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  padding: 0px 20px;
+  gap: 5px;
+  justify-content: center;
+}
+#portofolio .titles-portofolio h1 {
+  font-family: "Clash Display";
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--secColor);
+}
+#portofolio .titles-portofolio h2 {
+  font-family: "Clash Display";
+  font-size: 32px;
+  font-weight: 600;
+}
+#portofolio .slider-portofolio {
+  overflow-x: scroll;
+  display: flex;
+  gap: 30px;
+  padding: 0px 20px 50px;
+  align-items: center;
+}
+#portofolio .slider-portofolio p {
+  width: 100%;
+}
+#portofolio .slider-portofolio div {
+  display: flex;
+  padding: 20px;
+  height: 300px;
+  min-width: 200px;
+  background-position: center;
+  background-size: cover;
+}
+
+@media screen and (min-width: 700px) {
+  .onprogress {
+    position: fixed;
+    padding: 30px;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    z-index: 3;
+    -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(20px);
+    text-align: center;
+  }
+  .onprogress h1 {
+    font-size: 5vw;
+  }
+  .onprogress p {
+    font-size: 1.2vw;
+  }
+}/*# sourceMappingURL=style.css.map */
