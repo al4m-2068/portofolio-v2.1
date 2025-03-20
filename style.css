@@ -65,8 +65,6 @@ p {
   color: white;
   border-radius: 5px;
   text-decoration: none;
-}
-.headfoot p {
   font-family: "Clash Display";
   font-size: 16px;
   font-weight: 600;
@@ -76,8 +74,106 @@ p {
   height: 13px;
 }
 
+.not-yet {
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
 .onprogress {
   display: none;
+}
+
+.container {
+  position: relative;
+}
+
+#mobile-header {
+  width: -moz-fit-content;
+  width: fit-content;
+  height: 100vh;
+  position: fixed;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-start;
+  z-index: 999;
+  top: 0;
+  left: 0;
+}
+#mobile-header.active #m-header-button {
+  padding-left: 10px;
+  box-shadow: none;
+}
+#mobile-header.active #m-header-button img {
+  transform: rotate(-90deg);
+}
+#mobile-header #m-header-button {
+  margin-top: 50px;
+  height: -moz-max-content;
+  height: max-content;
+  display: flex;
+  padding: 10px;
+  padding-left: 20px;
+  border: none;
+  background-color: #f3ae41;
+  border-radius: 0px 10px 10px 0px;
+  transition: all 1s ease-in-out;
+  box-shadow: rgba(255, 255, 255, 0.3) 0px 0px 15px 5px;
+  z-index: 998;
+}
+#mobile-header #m-header-button img {
+  height: 25px;
+  transition: all 1s ease-in-out;
+}
+#mobile-header #m-header-contents {
+  margin-top: 50px;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 15px 15px 15px 15px;
+  border-bottom-right-radius: 10px;
+  background-color: #f3ae41;
+  z-index: 999;
+  transition: transform 0.3s ease-in-out;
+}
+#mobile-header #m-header-contents ul {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  list-style-type: none;
+}
+#mobile-header #m-header-contents ul li > a {
+  text-decoration: none;
+  font-family: "Figtree";
+  font-size: 18px;
+  color: white;
+}
+#mobile-header #m-header-contents hr {
+  border: white solid 1px;
+}
+#mobile-header #m-header-contents p {
+  font-size: 10px;
+}
+
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  -webkit-backdrop-filter: blur(20px);
+          backdrop-filter: blur(20px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  z-index: 998;
+}
+
+body.nav-open #overlay {
+  opacity: 1;
+  visibility: visible;
 }
 
 #hero::before {
@@ -320,13 +416,14 @@ p {
 }
 
 #portofolio {
+  position: relative;
   width: 100%;
   padding-block: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 50px;
   text-align: center;
+  overflow-x: hidden;
 }
 #portofolio .titles-portofolio {
   display: flex;
@@ -348,10 +445,12 @@ p {
   font-weight: 600;
 }
 #portofolio .slider-portofolio {
+  position: relative;
   overflow-x: scroll;
+  overflow-y: visible;
   display: flex;
   gap: 30px;
-  padding: 0px 20px 50px;
+  padding: 50px 20px 50px 20px;
   align-items: center;
 }
 #portofolio .slider-portofolio p {
@@ -359,11 +458,116 @@ p {
 }
 #portofolio .slider-portofolio div {
   display: flex;
+  flex-direction: column;
+  justify-content: end;
   padding: 20px;
+  gap: 8px;
   height: 300px;
   min-width: 200px;
   background-position: center;
   background-size: cover;
+  border-radius: 15px;
+  border: white solid 1px;
+  text-align: left;
+  transition-duration: 300ms;
+}
+#portofolio .slider-portofolio div p {
+  font-family: "Clash Display";
+  font-size: 20px;
+  font-weight: 600;
+}
+#portofolio .slider-portofolio div:hover {
+  box-shadow: #f3ae41 5px 5px 0px 0px;
+  transform: translateX(-5px) translateY(-5px);
+}
+
+#portofolio > img {
+  position: absolute;
+  z-index: -1;
+  filter: opacity(10%);
+  transform: translateX(-700px) translateY(30px);
+}
+
+#footer-cta {
+  position: relative;
+  width: 100%;
+  padding: 25px 20px 50px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  text-align: center;
+  overflow-x: hidden;
+}
+#footer-cta .footer-cta-text {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+#footer-cta .footer-cta-text h1 {
+  font-family: "Clash Display";
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--secColor);
+}
+#footer-cta .footer-cta-text h2 {
+  font-family: "Clash Display";
+  font-size: 32px;
+  font-weight: 600;
+}
+#footer-cta .footer-cta-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+#footer-cta > img {
+  position: absolute;
+  z-index: -1;
+  filter: opacity(10%);
+  width: 383px;
+  transform: translateX(-10px);
+}
+
+footer {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+}
+footer .footer-nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+footer .footer-nav div {
+  width: 100%;
+}
+footer .footer-nav div ul {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  list-style-type: none;
+}
+footer .footer-nav div ul li > a {
+  text-decoration: none;
+  font-family: "Figtree";
+  font-size: 13px;
+  color: white;
+}
+footer hr {
+  width: 100%;
+  border: white solid 1px;
+}
+footer p {
+  font-size: 13px;
 }
 
 @media screen and (min-width: 700px) {
