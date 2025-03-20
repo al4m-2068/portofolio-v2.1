@@ -135,7 +135,6 @@ p {
   border-bottom-right-radius: 10px;
   background-color: #f3ae41;
   z-index: 999;
-  transition: transform 0.3s ease-in-out;
 }
 #mobile-header #m-header-contents ul {
   display: flex;
@@ -404,8 +403,8 @@ body.nav-open #overlay {
   gap: 10px;
   align-items: center;
   justify-content: center;
-  text-align: left;
   gap: 25px;
+  text-align: center;
 }
 #skills .description-skills .content-d-s {
   flex-direction: column;
